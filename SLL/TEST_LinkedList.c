@@ -35,6 +35,13 @@ int main(void)
     NewNode = SLL_CreateNode(3000);
 
     SLL_InsertAfter(Current, NewNode);
+    
+    printf("\nInserting 150 before [3]....\n\n");
+    
+    Current = SLL_GetNodeAt(List, 2);
+    NewNode = SLL_CreateNode(150);
+
+    SLL_InsertBefore(&List, Current, NewNode);
 
     /* Print List */
     Count = SLL_GetNodeCount(List);
@@ -46,14 +53,16 @@ int main(void)
     /* Delete the memory of all nodes */
     printf("\nDestorying List....\n");
 
-    for (i = 0; i < Count; i++){
+    SLL_DestroyAllNodes(&List);
+
+    /*for (i = 0; i < Count; i++){
         Current = SLL_GetNodeAt(List, 0);
 
         if(Current != NULL){
             SLL_RemoveNode(&List, Current);
             SLL_DestoryNode(Current);
         }
-    }
+    }*/
 
     return 0;
 }
